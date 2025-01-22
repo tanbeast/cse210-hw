@@ -16,7 +16,11 @@ class Program
         job2._startYear = 2017;
         job2._endYear = 2022;
 
-       Console.WriteLine(job1.Display());
-       Console.Write(job2.Display());
+        Resume myResume = new Resume();
+        myResume._name = "Kade O'Crowley";
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
+
+        myResume.Display();
     }
 }
