@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class Job{
     public string _company;
     public string _jobTitle;
@@ -5,6 +7,6 @@ public class Job{
     public int _endYear;
 
     public string Display(){
-        return $"{_jobTitle} ({_company}) {_startYear}-{_endYear}";;
+        return $"{_jobTitle} ({_company}) {_startYear}-{_endYear}";
     }
 }
