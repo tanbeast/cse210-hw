@@ -8,17 +8,19 @@ class Program
     {
         int input = 0;
         while(input != 5){
-            Console.Write("PLease select one of the following choices:\n1. Write \n2. Display \n3. Load \n4.Save \n5.Quit \nWhat would you like to do? ");
+            Console.Write("PLease select one of the following choices:\n1. Write \n2. Display \n3. Load \n4.Save \n5.Quit \n\nWhat would you like to do? ");
             input = int.Parse(Console.ReadLine());
-            if (input == 1){
+            if (input == 1){ //write
                 Write write1 = new Write();
                 write1.WriteToFile();
-            }if (input == 2){
+
+            }if (input == 2){//Display
                 Display display1 = new Display();
                 display1.Read();
-            }if (input == 3){
+
+            }if (input == 3){//Load
                 
-            }if (input == 4){
+            }if (input == 4){//Save
                 Load load1 = new Load();
                 string file = load1.FileName();
                 load1.LoadFile(file);

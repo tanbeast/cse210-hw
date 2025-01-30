@@ -7,4 +7,4 @@ public class Display{
             Console.WriteLine(line);
         }
     }
-}
+} 

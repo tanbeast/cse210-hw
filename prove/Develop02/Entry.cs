@@ -31,4 +31,4 @@ public class Write{
             outputFile.WriteLine($"{dateText} - {selectedPrompt} \n{text}\n"); 
         }
     }
-}
+} 
