@@ -15,9 +15,13 @@ public class Journal
         PromptGenerator prompts = new PromptGenerator();
         entry._promptText = prompts.GetRandomPrompt();
 
-        Console.WriteLine($"Prompt: {entry._promptText}");
-        Console.Write("Response: ");
+        Console.WriteLine($"{entry._promptText}");
+        Console.Write("> ");
         entry._entryText = Console.ReadLine();
+
+        Console.WriteLine("\non a scale of 1-10 how was your day?");
+        Console.Write("> ");
+        entry._mood = Console.ReadLine();
 
         DateTime currentTime = DateTime.Now;
         entry._date = currentTime.ToShortDateString();
@@ -45,14 +49,13 @@ public class Journal
     {
         if (_entries.Count != 0) 
         {
-            Console.WriteLine("Enter journal name eg journal-1");
-            Console.Write("Name: ");
+            Console.Write("Enter journal name: ");
             _fileName = Console.ReadLine()+".csv";
             using (StreamWriter newFile = new StreamWriter(_fileName))
             {
                 foreach (Entry entry in _entries) 
                 {
-                    newFile.WriteLine($"{entry._date},{entry._promptText},{entry._entryText}");
+                    newFile.WriteLine($"{entry._date},{entry._promptText},{entry._entryText},{entry._mood}");
                 }
             }
             Console.WriteLine("Journal saved successfully! \n");
@@ -64,7 +67,7 @@ public class Journal
     }
     public void LoadFromFile()
     {
-        Console.WriteLine("Enter journal name to load eg journal-1.txt");
+        Console.WriteLine("Enter journal name to load");
         Console.Write("Name: ");
         _fileName = Console.ReadLine()+".csv";
 
@@ -74,19 +77,19 @@ public class Journal
             return;
         }
 
-        _entries.Clear();
-        using (StreamReader reader = new StreamReader(_fileName))
+        else using (StreamReader reader = new StreamReader(_fileName))
         {
             string line;
             while ((line = reader.ReadLine()) != null)
             {
                 string [] parts = line.Split(',');
-                if (parts.Length == 3)
+                if (parts.Length == 4)
                 {
                     Entry entry = new Entry();
                     entry._date = parts[0];
                     entry._promptText = parts[1];
                     entry._entryText = parts[2];
+                    entry._mood = parts[3];
                     _entries.Add(entry);
                 }
             }

@@ -13,6 +13,7 @@ class Program
             Console.Write("PLease select one of the following choices:\n1. Write \n2. Display \n3. Load \n4.Save \n5.Quit \n\n");
             Console.Write("Your choice number: ");
             int choice = int.Parse(Console.ReadLine());
+            Console.Write("");//line for better spacing.3
 
             switch (choice) 
             {
@@ -37,6 +38,6 @@ class Program
             }
         }
 
-        Console.WriteLine("\nCheers, catch-up later! \n");
+        Console.WriteLine("\nSee you later! \n");
     }
 }
