@@ -14,4 +14,12 @@ class Fraction{
         _top = top;
         _bottom = bottom;
     }
-}
+    public int top{
+        get{
+            return _top;
+        }
+        set{
+            _top = value;
+        }
+    }
+} 
