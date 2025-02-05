@@ -7,17 +7,17 @@ class Program
         Console.WriteLine("Hello Learning03 World!");
         Fraction one = new Fraction();
         one.Test();
-        one.top = 6;
-        Console.WriteLine($"{one.top}");
+        Console.WriteLine(one.GetDecimalValue());
+        Console.WriteLine(one.GetFractionString());
         
         Fraction two = new Fraction();
-        two.Test(6);
-        two.top = 6;
-        Console.WriteLine($"{two.top}");
+        two.Test(5);
+        Console.WriteLine(two.GetDecimalValue());
+        Console.WriteLine(two.GetFractionString());
         
         Fraction three = new Fraction();
-        three.Test(6,7);
-        three.top = 6;
-        Console.WriteLine($"{three.top}");
+        three.Test(3,5);
+        Console.WriteLine(three.GetDecimalValue());
+        Console.WriteLine(three.GetFractionString());
     }
 }

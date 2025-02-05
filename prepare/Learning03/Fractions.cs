@@ -14,12 +14,11 @@ class Fraction{
         _top = top;
         _bottom = bottom;
     }
-    public int top{
-        get{
-            return _top;
-        }
-        set{
-            _top = value;
-        }
+    public string GetFractionString(){
+        string Text = $"{_top}/{_bottom}";
+        return Text;
     }
-} 
+    public double GetDecimalValue(){
+        return (double) _top / (double) _bottom;
+    }
+}
