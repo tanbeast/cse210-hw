@@ -24,7 +24,7 @@ class Scripture
         {
             Random random = new Random();
             int wordsToHide = random.Next(2, 4); 
-            List<Word> visibleWords = Words.Where(word => !word.IsHidden).ToList();
+            List<Word> visibleWords = Words.Where(word => !word._IsHidden).ToList();
             for (int i = 0; i < wordsToHide && visibleWords.Count > 0; i++)
             {
                 int index = random.Next(visibleWords.Count);
@@ -35,6 +35,6 @@ class Scripture
 
         public bool AllWordsHidden()
         {
-            return Words.All(word => word.IsHidden);
+            return Words.All(word => word._IsHidden);
         }
     }

@@ -1,35 +1,35 @@
 class Reference
     {
-        public string Book { get; private set; }
-        public int Chapter { get; private set; }
-        public int Verse { get; private set; }
-        public int? EndVerse { get; private set; }  // Nullable for single verses
+        public string _Book { get; private set; }
+        public int _Chapter { get; private set; }
+        public int _Verse { get; private set; }
+        public int? _EndVerse { get; private set; }  // Nullable for single verses
 
         public Reference(string book, int chapter, int verse)
         {
-            Book = book;
-            Chapter = chapter;
-            Verse = verse;
-            EndVerse = null;
+            _Book = book;
+            _Chapter = chapter;
+            _Verse = verse;
+            _EndVerse = null;
         }
         
         public Reference(string book, int chapter, int startVerse, int endVerse)
         {
-            Book = book;
-            Chapter = chapter;
-            Verse = startVerse;
-            EndVerse = endVerse;
+            _Book = book;
+            _Chapter = chapter;
+            _Verse = startVerse;
+            _EndVerse = endVerse;
         }
 
         public override string ToString()
         {
-            if (EndVerse.HasValue)
+            if (_EndVerse.HasValue)
             {
-                return $"{Book} {Chapter}:{Verse}-{EndVerse}";
+                return $"{_Book} {_Chapter}:{_Verse}-{_EndVerse}";
             }
             else
             {
-                return $"{Book} {Chapter}:{Verse}";
+                return $"{_Book} {_Chapter}:{_Verse}";
             }
         }
     }

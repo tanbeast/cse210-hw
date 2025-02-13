@@ -1,30 +1,30 @@
 class Word
     {
-        private string Text { get; set; }
-        public bool IsHidden { get; private set; }
+        private string _Text { get; set; }
+        public bool _IsHidden { get; private set; }
 
         public Word(string text)
         {
-            Text = text;
-            IsHidden = false;
+            _Text = text;
+            _IsHidden = false;
         }
 
         // Hide the word
         public void Hide()
         {
-            IsHidden = true;
+            _IsHidden = true;
         }
 
         // Get the text to display (hidden or shown)
         public string GetDisplayText()
         {
-            if (IsHidden)
+            if (_IsHidden)
             {
-                return new string('_', Text.Length);
+                return new string('_', _Text.Length);
             }
             else
             {
-                return Text;
+                return _Text;
             }
         }
     }
