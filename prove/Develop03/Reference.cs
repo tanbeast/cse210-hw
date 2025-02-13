@@ -2,14 +2,14 @@ class Reference
     {
         public string Book { get; private set; }
         public int Chapter { get; private set; }
-        public int StartVerse { get; private set; }
+        public int Verse { get; private set; }
         public int? EndVerse { get; private set; }  // Nullable for single verses
 
         public Reference(string book, int chapter, int verse)
         {
             Book = book;
             Chapter = chapter;
-            StartVerse = verse;
+            Verse = verse;
             EndVerse = null;
         }
         
@@ -17,7 +17,7 @@ class Reference
         {
             Book = book;
             Chapter = chapter;
-            StartVerse = startVerse;
+            Verse = startVerse;
             EndVerse = endVerse;
         }
 
@@ -25,11 +25,11 @@ class Reference
         {
             if (EndVerse.HasValue)
             {
-                return $"{Book} {Chapter}:{StartVerse}-{EndVerse}";
+                return $"{Book} {Chapter}:{Verse}-{EndVerse}";
             }
             else
             {
-                return $"{Book} {Chapter}:{StartVerse}";
+                return $"{Book} {Chapter}:{Verse}";
             }
         }
     }
