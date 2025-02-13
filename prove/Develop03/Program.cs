@@ -7,7 +7,7 @@ class Program{
         string scriptureText = "Trust in the Lord with all thine heart and lean not unto thine own understanding.";
         Scripture scripture = new Scripture(reference, scriptureText);
 
-        Console.Clear()
+        Console.Clear();
         scripture.Display();
 
         while (true)
