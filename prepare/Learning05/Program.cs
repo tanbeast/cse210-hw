@@ -4,13 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning05 World!");
-        var square1 = new Square("Red", 7);
-        var rect = new Rectangle("Blue", 4, 5);
-        var circ = new Circle("Black", 5);
-        Console.WriteLine($"Shape Color: {square1.Color}, Area: {square1.GetArea()}");
-        Console.WriteLine($"Shape Color: {rect.Color}, Area: {rect.GetArea()}");
-        Console.WriteLine($"Shape Color: {circ.Color}, Area: {circ.GetArea()}");
+        List<Shape> shapes = new List<Shape>();
+
+        shapes.Add(new Square("Red", 5));
+        shapes.Add(new Rectangle("Blue", 4, 6));
+        shapes.Add(new Circle("Green", 3));
+
+        foreach (var shape in shapes){
+            Console.WriteLine($"Shape Color: {shape.Color}, Area: {shape.GetArea()}");
+        }
 
     }
 }
