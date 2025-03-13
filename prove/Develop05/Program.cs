@@ -86,7 +86,17 @@ Please select a number from the above menu: ");
 
     }
     private static void ListGoals(){
-
+        if (_goals.Count > 0)
+        {
+            foreach(Goal goal in _goals)
+            {
+                Console.WriteLine($"{goal.GetDetailsString()}");
+            }
+        } 
+        else
+        {
+            Console.WriteLine($"It appears you have no goals yet.");
+        }
     }
     private static void SaveGoals(){
 

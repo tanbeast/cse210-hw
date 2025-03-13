@@ -9,18 +9,17 @@ public class SimpleGoal : Goal{
     public override void RecordEvent(){
         if (!_isCompleted){
             _isCompleted = true;
-            Console.WriteLine($"Goal {Name} completed! You've earned {Points} points.");
+            Console.WriteLine($"Goal {_name} completed! You've earned {_points} points.");
         }
         else{ 
-            Console.WriteLine($"Goal {Name} has already been completed.");
+            Console.WriteLine($"Goal {_name} has already been completed.");
         }
     }
 
     public override bool IsCompleted() => _isCompleted;
 
-    public override void DisplayGoalStatus(){
-        string completionStatus = _isCompleted ? "[X]" : "[ ]";
-        Console.WriteLine($"{completionStatus} {Name}: {Description}");
+    public override string GetStringRepresentation(){
+        return $"SimpleGoal: {GetGoalName()},{GetGoalDescription()},{_isCompleted}";
     }
 
 

@@ -3,14 +3,13 @@ public class EternalGoal : Goal{
         : base(name, description, points) { }
 
     public override void RecordEvent(){
-        Console.WriteLine($"Goal {Name} completed! You've earned {Points} points.");
+        Console.WriteLine($"Goal {_name} completed! You've earned {_points} points.");
     }
 
     public override bool IsCompleted() => false;  
     // Eternal goals can never be completed
-
-    public override void DisplayGoalStatus(){
-        Console.WriteLine($"[ ] *{Name}: {Description}");
+    public override string GetStringRepresentation(){
+       return $"EternalGoal: {GetGoalName()},{GetGoalDescription()}";
     }
 }
  
