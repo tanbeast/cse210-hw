@@ -99,9 +99,26 @@ Please select a number from the above menu: ");
         }
     }
     private static void SaveGoals(){
+         if (_goals.Count > 0)
+        {
+            Console.Write("What is the name of the file you want to save in? ");
+            string fileName = Console.ReadLine();
 
+            using (StreamWriter newFile = new StreamWriter(fileName))
+            {
+                newFile.WriteLine(_score);
+                foreach (Goal goal in _goals)
+                {
+                    newFile.WriteLine($"{goal.GetStringRepresentation()}");   
+                }
+            }
+        } 
+        else{
+            Console.WriteLine($"It appears you have no goals yet.");
+        }
     }
     private static void LoadGoals(){
+        
 
     }
     private static void RecordEvent(){
