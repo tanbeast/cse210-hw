@@ -3,12 +3,13 @@ public class GoalManager
     private  List<Goal> _goals = new List<Goal>();
     private  int _score = 0;
     private int  _level = 1;
-    private int _goalsCompleted = 0;
+    double _goalsCompleted = 0;
     double  _levelup = 5;
 
     public void Start()
-    {
-         Console.WriteLine("Goal Tracker Program");
+    {   
+        Console.Clear();
+        Console.WriteLine("Goal Tracker Program");
 
         // Main menu loop
         while (true){
@@ -196,10 +197,13 @@ Please select a number from the above menu: ");
 
             Goal goal = _goals[index-1];
             int earned = goal.RecordEvent();
+            if (earned != 0){
             _score = _score + earned;
+            _goalsCompleted++;
             Console.WriteLine($"\nCongratulations! You have earned {earned} points!");
             
             Console.WriteLine($"You now have {_score} points!");
+            }
 
             int levelBefore = _level;
             LevelCheckUpgrade();

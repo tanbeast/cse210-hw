@@ -3,7 +3,6 @@ public class EternalGoal : Goal{
         : base(name, description, points) { }
 
     public override int RecordEvent(){
-        Console.WriteLine($"Goal {_name} completed! You've earned {_points} points.");
         return GetGoalPoints();
     }
 
