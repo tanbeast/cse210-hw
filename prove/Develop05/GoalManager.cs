@@ -2,6 +2,9 @@ public class GoalManager
 {
     private  List<Goal> _goals = new List<Goal>();
     private  int _score = 0;
+    private int  _level = 1;
+    private int _goalsCompleted = 0;
+    double  _levelup = 5;
 
     public void Start()
     {
@@ -9,7 +12,8 @@ public class GoalManager
 
         // Main menu loop
         while (true){
-            Console.WriteLine($"Total score: {_score}");
+            LevelCheckUpgrade();
+            Console.WriteLine($"\nYou are in level {_level} with {_score} points.");
             Console.Write(@"
 Menu Options:
     1. Create New Goal
@@ -196,10 +200,30 @@ Please select a number from the above menu: ");
             Console.WriteLine($"\nCongratulations! You have earned {earned} points!");
             
             Console.WriteLine($"You now have {_score} points!");
+
+            int levelBefore = _level;
+            LevelCheckUpgrade();
+            if (_level > levelBefore)
+            {
+                _score += 20;
+                Console.WriteLine($"\nCongratulations, you have entered a NEW LEVEL and received 20 bonus points");
+                
+            }
         } 
         else
         {
             Console.WriteLine($"It appears you have no goals yet.");
+        }
+    }
+    public void LevelCheckUpgrade()
+    {
+        while (_goalsCompleted > _levelup)
+        {
+            for (int i=1; i<=_level; i++)
+            {
+                _levelup *= 1.5;
+            }
+            _level++;
         }
     }
     
