@@ -17,7 +17,7 @@ public class ChecklistGoal : Goal{
         _timesCompleted = 0;
     }
 
-    public override void RecordEvent(){
+    public override int RecordEvent(){
         if (_timesCompleted < _target){
             _timesCompleted++;
             Console.WriteLine($"Goal {_name} recorded! You've earned {_points} points.");
@@ -25,10 +25,14 @@ public class ChecklistGoal : Goal{
             // If goal is completed, add bonus
             if (_timesCompleted == _target){
                 Console.WriteLine($"Congratulations! You've completed the goal. Bonus of {_bonus} points awarded.");
+                Thread.Sleep(1000);
+                return GetGoalPoints() + _bonus;
             }
+            return GetGoalPoints();
         }
         else{
             Console.WriteLine($"Goal {_name} is already completed.");
+            return GetGoalPoints();
         }
     }
 

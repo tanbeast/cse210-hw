@@ -10,7 +10,7 @@ public abstract class Goal{
         _points = points;
     }
 
-    public abstract void RecordEvent();
+    public abstract int RecordEvent();
     public abstract bool IsCompleted();
     public abstract string GetStringRepresentation();
     public virtual string GetDetailsString(){
@@ -25,5 +25,7 @@ public abstract class Goal{
     public string GetGoalDescription(){
         return _description;
     }
-
+    public int GetGoalPoints(){
+        return _points;
+    }
 }

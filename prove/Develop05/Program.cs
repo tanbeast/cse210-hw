@@ -25,31 +25,37 @@ Please select a number from the above menu: ");
 
             switch (choice){
                 case "1":
+                    Console.Clear();
                     CreateGoal();
                     break;
                 case "2":
+                    Console.Clear();
                     ListGoals();
                     break;
                 case "3":
+                    Console.Clear();
                     SaveGoals();
                     break;
                 case "4":
+                    Console.Clear();
                     LoadGoals();
                     break;
                 case "5":
+                    Console.Clear();
                     RecordEvent();
                     break;
                 case "6":
                     Console.WriteLine("Exiting program...");
                     return;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Invalid option.");
                     break;
             }
         }
        
     }
-    private static void CreateGoal(){
+    public static void CreateGoal(){
         int choice = 0;
         Console.WriteLine($"\nThe type of goals are:\n 1. Simple Goal\n 2. Eternal Goal\n 3. Checklist Goal");
         while (choice != 1 && choice != 2 && choice != 3)
@@ -85,7 +91,7 @@ Please select a number from the above menu: ");
         }
 
     }
-    private static void ListGoals(){
+    public static void ListGoals(){
         if (_goals.Count > 0)
         {
             foreach(Goal goal in _goals)
@@ -98,7 +104,7 @@ Please select a number from the above menu: ");
             Console.WriteLine($"It appears you have no goals yet.");
         }
     }
-    private static void SaveGoals(){
+    public static void SaveGoals(){
          if (_goals.Count > 0)
         {
             Console.Write("What is the name of the file you want to save in? ");
@@ -117,7 +123,7 @@ Please select a number from the above menu: ");
             Console.WriteLine($"It appears you have no goals yet.");
         }
     }
-    private static void LoadGoals(){
+    public static void LoadGoals(){
         Console.Write("Name of the file you want to load? ");
         string fileName = Console.ReadLine();
         if (!File.Exists(fileName))
@@ -168,7 +174,34 @@ Please select a number from the above menu: ");
         }
 
     }
-    private static void RecordEvent(){
-
+    public void ListGoalNames()
+    {
+        Console.WriteLine("\nThe goals are:");
+        int index = 1;
+        foreach (Goal goal in _goals)
+        {
+            Console.WriteLine($"{index}. {goal.GetGoalName()}");
+            index++;
+        }
     }
+    public void RecordEvent(){
+        if (_goals.Count > 0)
+        {
+            ListGoalNames();
+            Console.Write("Which goal did you accomplish? ");
+            int.TryParse(Console.ReadLine(), out int index);
+
+            Goal goal = _goals[index-1];
+            int earned = goal.RecordEvent();
+            _score = _score + earned;
+            Console.WriteLine($"\nCongratulations! You have earned {earned} points!");
+            
+            Console.WriteLine($"You now have {_score} points!");
+        } 
+        else
+        {
+            Console.WriteLine($"It appears you have no goals yet.");
+        }
+    }
+    
 }

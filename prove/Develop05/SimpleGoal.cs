@@ -6,7 +6,7 @@ public class SimpleGoal : Goal{
         _isCompleted = false;
     }
 
-    public override void RecordEvent(){
+    public override int RecordEvent(){
         if (!_isCompleted){
             _isCompleted = true;
             Console.WriteLine($"Goal {_name} completed! You've earned {_points} points.");
