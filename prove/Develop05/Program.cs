@@ -118,7 +118,54 @@ Please select a number from the above menu: ");
         }
     }
     private static void LoadGoals(){
-        
+        Console.Write("Name of the file you want to load? ");
+        string fileName = Console.ReadLine();
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine("No such file name");
+            return;
+        }
+
+        using (StreamReader reader = new StreamReader(fileName))
+        {
+            _score = int.Parse(reader.ReadLine());
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {   
+                string[] lineArray = line.Split(':');
+                string goalType = lineArray[0].Trim();
+
+                string[] goalDetails = lineArray[1].Split(',');
+                string name = goalDetails[0].Trim();
+                string description = goalDetails[1].Trim();
+                int.TryParse(goalDetails[2], out int points);
+
+                switch (goalType)
+                {
+                    case "SimpleGoal":
+                        SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
+                        if (goalDetails[2].Trim() == "True")
+                        {
+                            simpleGoal.IsCompleted();
+                        }
+                        _goals.Add(simpleGoal);
+                        break;
+                    case "EternalGoal":
+                        EternalGoal eternalGoal = new EternalGoal(name, description, points);
+                        _goals.Add(eternalGoal);
+                        break;
+                    case "ChecklistGoal":
+                        // int.TryParse(goalDetails[3], out int bonus);
+                        int.TryParse(goalDetails[2], out int target);
+                        int.TryParse(goalDetails[3], out int amountCompleted);
+
+                        ChecklistGoal checklistGoal = new ChecklistGoal(name, description,points, target);
+                        checklistGoal.SetAmountCompleted(amountCompleted);
+                        _goals.Add(checklistGoal);
+                        break;
+                }
+            }
+        }
 
     }
     private static void RecordEvent(){

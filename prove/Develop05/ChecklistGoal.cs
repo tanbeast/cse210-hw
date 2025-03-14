@@ -41,4 +41,7 @@ public class ChecklistGoal : Goal{
     public override string GetStringRepresentation(){
         return $"ChecklistGoal: {GetGoalName()},{GetGoalDescription()},{_target},{_timesCompleted}";
     }
+    public void SetAmountCompleted(int amount){
+        _timesCompleted = amount;
+    }
 }
