@@ -117,6 +117,7 @@ Please select a number from the above menu: ");
             using (StreamWriter newFile = new StreamWriter(fileName))
             {
                 newFile.WriteLine(_score);
+                newFile.WriteLine(_goalsCompleted);
                 foreach (Goal goal in _goals)
                 {
                     newFile.WriteLine($"{goal.GetStringRepresentation()}");   
@@ -138,7 +139,8 @@ Please select a number from the above menu: ");
 
         using (StreamReader reader = new StreamReader(fileName))
         {
-            _score = int.Parse(reader.ReadLine());
+            _score += int.Parse(reader.ReadLine());
+            _goalsCompleted += int.Parse(reader.ReadLine());
             string line;
             while ((line = reader.ReadLine()) != null)
             {   
