@@ -9,7 +9,9 @@ public class BookTracker
     private const string FilePath = "my books.txt";
     private readonly List<string> _validGenres = new List<string> { "Fantasy", "SelfHelp", "History", "Romance", "Folklore" };
 
-    public BookTracker(){
+    public BookTracker(User user){
+        
+        this.user = user;
         LoadData();
     }
 

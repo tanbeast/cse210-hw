@@ -5,14 +5,20 @@ class Program
     static void Main()
     {
         BookTracker tracker = new BookTracker();
+        
+        Console.Write("Enter your name: ");
+        string userName = Console.ReadLine();
+        User user = new User(userName);
+        BookTracker tracker = new BookTracker(user);
         while (true)
         {
-            Console.WriteLine("\nMenu:");
-            Console.WriteLine("1. Enter a book I have read");
-            Console.WriteLine("2. Enter a book I want to read");
-            Console.WriteLine("3. Show my library of read books");
-            Console.WriteLine("4. Get a book suggestion");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine($@"
+            Menu:
+            1. Enter a book I have read
+            2. Enter a book I want to read
+            3. Show my library of read books
+            4. Get a book suggestion
+            5. Exit");
 
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
