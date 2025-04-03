@@ -7,6 +7,7 @@ class BookTracker
     private List<Book> _toReadBooks = new List<Book>();
     private User user;
 
+
     public BookTracker(User user){
         this.user = user;
         LoadData();
@@ -65,6 +66,7 @@ class BookTracker
     }
 
     private void SaveData(){
+        LoadData();
         List<string> lines = new List<string>();
 
         foreach (var book in _readBooks){
@@ -74,12 +76,12 @@ class BookTracker
             lines.Add($"ToReadBook,{book.Title},{book.Genre},{book.Pages}");
         }
 
-        File.WriteAllLines(FilePath, lines);
+        File.WriteAllLines(user.FilePath, lines);
     }
 
     private void LoadData(){
-        if (File.Exists(FilePath)){
-            var lines = File.ReadAllLines(FilePath);
+        if (File.Exists(user.FilePath)){
+            var lines = File.ReadAllLines(user.FilePath);
 
             foreach (var line in lines){
                 var parts = line.Split('|');

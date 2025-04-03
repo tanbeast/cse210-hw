@@ -8,19 +8,23 @@ class Program
         string userName = Console.ReadLine();
         User user = new User(userName);
         
+
         BookTracker tracker = new BookTracker(user);
         while (true)
         {
+            
             Console.WriteLine($@"
-            Menu:
-            1. Enter a book I have read
-            2. Enter a book I want to read
-            3. Show my library of read books
-            4. Get a book suggestion
-            5. Exit");
+Menu:
+1. Enter a book I have read
+2. Enter a book I want to read
+3. Show my library of read books
+4. Get a book suggestion
+5. Exit
+");
 
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
+            Console.Clear();
 
             switch (choice)
             {

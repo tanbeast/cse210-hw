@@ -5,6 +5,6 @@ class ToReadBook : Book
 
 
     public override void DisplayInfo(){
-        Console.WriteLine($"To Read Book - Title: {Title}| Genre: {Genre}| Pages: {Pages}");
+        Console.WriteLine($"To Read Book - Title: {Title}, Genre: {Genre}, Pages: {Pages}");
     }
 }
