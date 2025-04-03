@@ -21,7 +21,7 @@ class BookTracker
             return;
         }
         _readBooks.Add(new ReadBook(title, genre, pages));
-        SaveData();
+        SaveData("ReadBook", title, genre, pages);
         Console.WriteLine($"Added '{title}' to read books.");
     }
 
@@ -33,7 +33,7 @@ class BookTracker
             return;
         }
         _toReadBooks.Add(new ToReadBook(title, genre, pages));
-        SaveData();
+        SaveData("ToReadBook", title, genre, pages);
         Console.WriteLine($"Added '{title}' to books to read.");
     }
 
@@ -65,18 +65,11 @@ class BookTracker
         suggestion.DisplayInfo();
     }
 
-    private void SaveData(){
-        LoadData();
-        List<string> lines = new List<string>();
-
-        foreach (var book in _readBooks){
-            lines.Add($"ReadBook,{book.Title},{book.Genre},{book.Pages}");
+    private void SaveData(string type, string title, string genre, int pages){
+        using (StreamWriter writer = new StreamWriter(user.FilePath, true))
+        {
+            writer.WriteLine($"{type}|{title}|{genre}|{pages}");
         }
-        foreach (var book in _toReadBooks){
-            lines.Add($"ToReadBook,{book.Title},{book.Genre},{book.Pages}");
-        }
-
-        File.WriteAllLines(user.FilePath, lines);
     }
 
     private void LoadData(){
