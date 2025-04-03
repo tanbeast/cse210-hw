@@ -1,55 +1,60 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 
-public class BookTracker
+class BookTracker
 {
     private List<Book> _readBooks = new List<Book>();
     private List<Book> _toReadBooks = new List<Book>();
-    private const string FilePath = "my books.txt";
-    private readonly List<string> _validGenres = new List<string> { "Fantasy", "SelfHelp", "History", "Romance", "Folklore" };
+    private User user;
 
     public BookTracker(User user){
-        
         this.user = user;
         LoadData();
     }
 
-    public void AddReadBook(string title, string genre, int pages){
-        if (!_validGenres.Contains(genre)){
+    public void AddReadBook(string title, string genre, int pages)
+    {
+        if (!GenreValidator.IsValidGenre(genre))
+        {
             Console.WriteLine("Invalid genre.");
             return;
         }
-        var newBook = new ReadBook(title, genre, pages);
-        _readBooks.Add(newBook);
+        _readBooks.Add(new ReadBook(title, genre, pages));
         SaveData();
         Console.WriteLine($"Added '{title}' to read books.");
     }
 
-    public void AddToReadBook(string title, string genre, int pages){
-        if (!_validGenres.Contains(genre)){
+    public void AddToReadBook(string title, string genre, int pages)
+    {
+        if (!GenreValidator.IsValidGenre(genre))
+        {
             Console.WriteLine("Invalid genre.");
             return;
         }
-        var newBook = new ToReadBook(title, genre, pages);
-        _toReadBooks.Add(newBook);
+        _toReadBooks.Add(new ToReadBook(title, genre, pages));
         SaveData();
         Console.WriteLine($"Added '{title}' to books to read.");
     }
 
-    public void ShowLibrary(){
-        if (_readBooks.Count == 0){
+    public void ShowLibrary()
+    {
+        if (_readBooks.Count == 0)
+        {
             Console.WriteLine("No books read yet.");
             return;
         }
-        Console.WriteLine("Books I Have Read:");
-        foreach (var book in _readBooks){
+        Console.WriteLine("Books Read:");
+        foreach (var book in _readBooks)
+        {
             book.DisplayInfo();
         }
+        BookStatistics.ShowStatistics(_readBooks);
     }
 
-    public void SuggestBook(){
-        if (_toReadBooks.Count == 0){
+    public void SuggestBook()
+    {
+        if (_toReadBooks.Count == 0)
+        {
             Console.WriteLine("No books in the 'to read' list.");
             return;
         }

@@ -4,11 +4,10 @@ class Program
 {
     static void Main()
     {
-        BookTracker tracker = new BookTracker();
-        
         Console.Write("Enter your name: ");
         string userName = Console.ReadLine();
         User user = new User(userName);
+        
         BookTracker tracker = new BookTracker(user);
         while (true)
         {
