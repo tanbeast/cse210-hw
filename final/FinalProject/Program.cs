@@ -47,17 +47,17 @@ Menu:
                     }
                     string genreChoice = genres[genreIndex - 1];
 
-                    Console.Write("Enter number of pages: ");
-                    if (!int.TryParse(Console.ReadLine(), out int pages) || pages <= 0)
-                    {
-                        Console.WriteLine("Invalid page number.");
-                        continue;
-                    }
+                    if (choice == "1"){
+                        Console.Write("Enter number of pages: ");
+                        if (!int.TryParse(Console.ReadLine(), out int pages) || pages <= 0)
+                        {
+                            Console.WriteLine("Invalid page number.");
+                        }
 
-                    if (choice == "1")
                         tracker.AddReadBook(title, genreChoice, pages);
+                    }
                     else
-                        tracker.AddToReadBook(title, genreChoice, pages);
+                        tracker.AddToReadBook(title, genreChoice, 0);
                     break;
                 case "3":
                     tracker.ShowLibrary();
