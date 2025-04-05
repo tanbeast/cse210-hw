@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class BookTracker
-{
+class BookTracker{
     private List<Book> _readBooks = new List<Book>();
     private List<Book> _toReadBooks = new List<Book>();
     private User user;
@@ -13,49 +12,42 @@ class BookTracker
         LoadData();
     }
 
-    public void AddReadBook(string title, string genre, int pages)
-    {
-        if (!GenreValidator.IsValidGenre(genre))
-        {
+    public void AddReadBook(string title, string genre, int pages){
+        if (!GenreValidator.IsValidGenre(genre)){
             Console.WriteLine("Invalid genre.");
             return;
         }
+
         _readBooks.Add(new ReadBook(title, genre, pages));
         SaveData("ReadBook", title, genre, pages);
         Console.WriteLine($"Added '{title}' to read books.");
     }
 
-    public void AddToReadBook(string title, string genre, int pages)
-    {
-        if (!GenreValidator.IsValidGenre(genre))
-        {
+    public void AddToReadBook(string title, string genre, int pages){
+        if (!GenreValidator.IsValidGenre(genre)){
             Console.WriteLine("Invalid genre.");
             return;
         }
+
         _toReadBooks.Add(new ToReadBook(title, genre, pages));
         SaveData("ToReadBook", title, genre, pages);
         Console.WriteLine($"Added '{title}' to books to read.");
     }
 
-    public void ShowLibrary()
-    {
-        if (_readBooks.Count == 0)
-        {
+    public void ShowLibrary(){
+        if (_readBooks.Count == 0){
             Console.WriteLine("No books read yet.");
             return;
         }
         Console.WriteLine("Books Read:");
-        foreach (var book in _readBooks)
-        {
+        foreach (var book in _readBooks){
             book.DisplayInfo();
         }
         BookStatistics.ShowStatistics(_readBooks);
     }
 
-    public void SuggestBook()
-    {
-        if (_toReadBooks.Count == 0)
-        {
+    public void SuggestBook(){
+        if (_toReadBooks.Count == 0){
             Console.WriteLine("No books in the 'to read' list.");
             return;
         }
@@ -66,8 +58,7 @@ class BookTracker
     }
 
     private void SaveData(string type, string title, string genre, int pages){
-        using (StreamWriter writer = new StreamWriter(user.FilePath, true))
-        {
+        using (StreamWriter writer = new StreamWriter(user.FilePath, true)){
             writer.WriteLine($"{type}|{title}|{genre}|{pages}");
         }
     }

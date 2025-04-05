@@ -1,5 +1,4 @@
-class User
-{
+class User{
     public string Name { get; private set; }
     public string FilePath => $"{Name}_books.txt";
 

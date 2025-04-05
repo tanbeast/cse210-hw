@@ -1,5 +1,4 @@
-public abstract class Book
-{
+public abstract class Book{
 
     private string _title;
     private string _genre;
@@ -23,7 +22,7 @@ public abstract class Book
         Genre = _genre;
         Pages = _pages;
     }
-     public Book(string _title, string _genre){
+    public Book(string _title, string _genre){
         Title = _title;
         Genre = _genre;
         Pages = 0;
